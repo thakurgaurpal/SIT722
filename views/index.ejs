@@ -3,22 +3,100 @@
   <head>
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <style>
+      /* Your existing CSS styles for the table */
+      /* ... */
+
+      /* Add a class for styling the editable cells */
+      .editable-cell {
+        background-color: #f7f7f7;
+        word-wrap: break-word; /* Allow text to wrap within cells */
+      }
+
+      /* Set a fixed height for the table rows */
+      .table tr {
+        height: 40px; /* You can adjust this value as per your preference */
+      }
+
+      /* Set fixed widths for each column */
+      .table td:nth-child(1),
+      .table th:nth-child(1) {
+        width: 05px; /* Adjust the width as needed */
+      }
+
+      .table td:nth-child(2),
+      .table th:nth-child(2) {
+        width: 40px; /* Adjust the width as needed */
+      }
+
+      .table td:nth-child(3),
+      .table th:nth-child(3) {
+        width: 100px; /* Adjust the width as needed */
+      }
+
+      .table td:nth-child(4),
+      .table th:nth-child(4) {
+        width: 500px; 
+      }
+
+      .table td:nth-child(5),
+      .table th:nth-child(5) {
+        width: 400x; /* Adjust the width as needed */
+      }
+
+      /* Add this to prevent table from collapsing when content is smaller than the width */
+      .table {
+        table-layout: fixed;
+      }
+    </style>
   </head>
   <body>
     <h1><%= title %></h1>
-    <p>Welcome to <%= sub %></p>
-    <table>
+    
+    <div class="table-container">
+      <table class="table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>S.N</th>
+            <th>Term</th>
+            <th>Description</th>
+            <th>References</th>
+          </tr>
+        </thead>
+        <tbody id="table-body">
+          <% names.forEach((item) => { %>
+            <tr>
+              <td><%= item.id %></td>
+              <td class="editable-cell" contenteditable="true"><%= item['S.N'] %></td>
+              <td class="editable-cell" contenteditable="true"><%= item['Term'] %></td>
+              <td class="editable-cell" contenteditable="true"><%= item['Description'] %></td>
+              <td class="editable-cell" contenteditable="true"><%= item['Refrences'] %></td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
 
-      <%names.forEach((name) => { %>
-        <tr>
-          <td>
-            <%= name.id%>
-          </td>>
-          <td>
-            <%= name.name%>
-          </td>>
-        </tr>>
-      <% }) %>
-    </table>>
+    <button onclick="addRow()">Add Row</button>
+
+    <script>
+      // JavaScript code to handle changes to the table cells
+      /* ... */
+
+      // Function to add a new row to the table
+      function addRow() {
+        const tableBody = document.getElementById('table-body');
+        const newRow = document.createElement('tr');
+        newRow.innerHTML = `
+          <td></td>
+          <td class="editable-cell" contenteditable="true"></td>
+          <td class="editable-cell" contenteditable="true"></td>
+          <td class="editable-cell" contenteditable="true"></td>
+          <td class="editable-cell" contenteditable="true"></td>
+        `;
+        tableBody.appendChild(newRow);
+      }
+    </script>
   </body>
 </html>
