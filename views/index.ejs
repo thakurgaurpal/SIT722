@@ -36,12 +36,12 @@
 
       .table td:nth-child(4),
       .table th:nth-child(4) {
-        width: 500px; 
+        width: 1000px; 
       }
 
       .table td:nth-child(5),
       .table th:nth-child(5) {
-        width: 400x; /* Adjust the width as needed */
+        width: 150x; /* Adjust the width as needed */
       }
 
       /* Add this to prevent table from collapsing when content is smaller than the width */
@@ -68,10 +68,10 @@
           <% names.forEach((item) => { %>
             <tr>
               <td><%= item.id %></td>
-              <td class="editable-cell" contenteditable="true"><%= item['S.N'] %></td>
-              <td class="editable-cell" contenteditable="true"><%= item['Term'] %></td>
-              <td class="editable-cell" contenteditable="true"><%= item['Description'] %></td>
-              <td class="editable-cell" contenteditable="true"><%= item['Refrences'] %></td>
+              <td class="editable-cell" contenteditable="false"><%= item['S.N'] %></td>
+              <td class="editable-cell" contenteditable="false"><%= item['Term'] %></td>
+              <td class="editable-cell" contenteditable="false"><%= item['Description'] %></td>
+              <td class="editable-cell" contenteditable="false"><%= item['Refrences'] %></td>
             </tr>
           <% }) %>
         </tbody>
